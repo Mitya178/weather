@@ -1,9 +1,12 @@
 import requests
+import os
 
 from flask import Flask, request, render_template
 from datetime import datetime
 
 app = Flask(__name__)
+API_KEY = os.environ['API_KEY']
+
 
 @app.route("/weather", methods=['GET'])
 def index():
@@ -53,7 +56,7 @@ def index():
 def req(city, days):
     city = city
     cnt = days
-    response = requests.get(f'http://api.openweathermap.org/data/2.5/forecast?q={city}&appid=7ace9452d6c407830023ad484d1decae&lang=ru&cnt={cnt}&units=metric')
+    response = requests.get(f'http://api.openweathermap.org/data/2.5/forecast?q={city}&appid={API_KEY}&lang=ru&cnt={cnt}&units=metric')
     return response.json()
 
 def median(sample):
@@ -67,7 +70,7 @@ def median(sample):
         m1 = n/2
         m2 = m1 -1
         m = (sarr[int(m2)] + sarr[int(m1)])/2
-        return f"{m}"
+        return f"{round(m, 2)}"
 
 
 def average(sample):
