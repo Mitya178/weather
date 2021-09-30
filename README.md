@@ -15,7 +15,7 @@ Application to call weather forecast
 ```
 # docker build -t my_flask_app:v0.1 my_Flask_app/ .
 
-# docker tag my_flask_app mitya178/task2_dell:v1
+# docker tag my_flask_app:v0.1 mitya178/task2_dell:v1
 
 # docker push mitya178/task2_dell:v1
 
@@ -34,5 +34,6 @@ Application to call weather forecast
 ```
 
 ## Support
-
+```
 # Operation system:Ubuntu 18.04.05
+```
