@@ -16,7 +16,7 @@ Application to call weather forecast
 
 ## Docker
 ```
-# docker build -t my_flask_app:v0.1 my_Flask_app/ .
+# docker build -t my_flask_app:v0.1 .
 
 # docker tag my_flask_app:v0.1 mitya178/task2_dell:v1
 
