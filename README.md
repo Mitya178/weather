@@ -13,6 +13,9 @@ Application to call weather forecast
 
 ## Docker
 ```
+# docker build -t my_flask_app:v0.1 my_Flask_app/
+
+# docker push mitya178/task2_dell:v1
 
 # docker pull mitya178/task2_dell:v1
 
@@ -21,6 +24,9 @@ Application to call weather forecast
 
 ## How to check
 ```
+# sudo dpkg -l | grep docker
+
+# sudo apt-get install docker.io
 
 # curl 127.0.0.1:8080/weather?city=London\&days=4
 ```
