@@ -24,7 +24,7 @@ Application to call weather forecast
 
 # docker pull mitya178/task2_dell:v1
 
-# docker run -p 8080:8080 --rm -e API_KEY='Your_API_KEY' mitya178/task2_dell:v1
+# docker run -d  -p 8080:8080 --rm -e API_KEY='Your_API_KEY' mitya178/task2_dell:v1
 ```
 
 ## How to check
