@@ -1,2 +1,2 @@
 Flask==1.1.1
-request
+request==2.18.4
