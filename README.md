@@ -13,7 +13,9 @@ Application to call weather forecast
 
 ## Docker
 ```
-# docker build -t my_flask_app:v0.1 my_Flask_app/
+# docker build -t my_flask_app:v0.1 my_Flask_app/ .
+
+# docker tag my_flask_app mitya178/task2_dell:v1
 
 # docker push mitya178/task2_dell:v1
 
@@ -30,3 +32,7 @@ Application to call weather forecast
 
 # curl 127.0.0.1:8080/weather?city=London\&days=4
 ```
+
+## Support
+
+# Operation system:Ubuntu 18.04.05
