@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        def ci
+        //def ci
         stage('pipeline-test1') {
             //container('docker') {
             //  ci.build()
