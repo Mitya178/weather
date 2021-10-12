@@ -4,10 +4,11 @@ pipeline {
     stages {
         def ci
         stage('pipeline-test1') {
-            container('docker') {
-              ci.build()
-            }
-            //steps {
+            //container('docker') {
+            //  ci.build()
+            //}
+            steps {
+                container('docker')
             //    echo 'TESTING'
             //    
             //    sh "ls -la"
@@ -18,7 +19,7 @@ pipeline {
             //       docker build -t my_flask_app:v0.1 .
             //    '''
             //    echo 'TESTING'
-            //}
+            }
         }
     }
 }
