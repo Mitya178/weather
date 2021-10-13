@@ -19,8 +19,10 @@ pipeline {
     }
     stage('Push') {
       steps {
-        sh 'docker tag my_flask_app:v0.1 mitya178/my_flask_app:v0.07
-        sh 'docker push mitya178/my_flask_app:v0.07'
+        sh '''
+        docker tag my_flask_app:v0.1 mitya178/my_flask_app:v0.07
+        docker push mitya178/my_flask_app:v0.07'
+        '''
       }
     }
   }
