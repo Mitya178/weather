@@ -1,0 +1,28 @@
+pipeline {
+ agent any
+ environment {
+   DOCKERHUB_CREDENTIALS = credentials('mitya178-dockerhub')
+}
+ stages {
+  stage('Build') {
+   step {
+        sh 'docker build -t my_flask_app:v0.1 .'
+   }
+ }
+  stage('Login') {
+   step {
+        sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+   }
+  }
+  stage('Push') {
+   step {
+        sh 'docker push mitya178/my_flask_app:v0.07'
+   }
+  }
+}
+ post {
+   always {
+        sh 'docker logout'
+    }
+   }
+ }
