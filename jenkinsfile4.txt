@@ -28,7 +28,7 @@ pipeline {
     stage('Deploy to K8s') {
             steps {
                 sshagent(credentials: ['k8s-master']) {
-                    sh 'scp -r -o StrictHostKeyChecking=no deployment.yaml root@94.26.239.41:/root/kubernetes'
+                    sh 'scp -r -o StrictHostKeyChecking=no try2.yaml root@94.26.239.41:/root/kubernetes'
                     script {
                         try {
                             sh 'ssh root@94.26.239.41 "kubectl apply -f /home/dmitriy/manifest/try2.yaml --kubeconfig=/root/.kube/config"'
