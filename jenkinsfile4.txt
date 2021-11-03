@@ -31,7 +31,7 @@ pipeline {
                     sh 'scp -r -o StrictHostKeyChecking=no try2.yaml root@94.26.239.41:/root/kubernetes'
                     script {
                         try {
-                            sh 'ssh root@94.26.239.41 "kubectl apply -f /home/dmitriy/manifest/try2.yaml --kubeconfig=/root/.kube/config"'
+                            sh 'ssh root@94.26.239.41 "kubectl apply -f /home/dmitriy/manifest/try2.yaml --kubeconfig=/tmp/test"'
                         } catch(error) { }
                     }
                 }
