@@ -6,7 +6,6 @@ pipeline {
   environment {
     DOCKERHUB_CREDENTIALS = credentials('mitya178-dockerhub')
   }
-  def tag = org.apache.commons.lang.RandomStringUtils.randomAlphanumeric(10).toLowerCase()
   stages {
     stage('Build') {
       steps {
@@ -21,7 +20,6 @@ pipeline {
     stage('Push') {
       steps {
         sh '''
-        echo $tag
         docker tag my_flask_app:v0.1 mitya178/my_flask_app:v1
         docker push mitya178/my_flask_app:v1
         '''
