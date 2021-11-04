@@ -30,8 +30,8 @@ pipeline {
             steps {
 	    	withKubeConfig([credentialsId: 'jenkins4', serverUrl: 'https://94.26.239.41:6443']) {
                 sh '''
-		sed -i "s/TAG/$tag/" deployments.yaml
-                kubectl apply -f deployments.yaml
+		sed -i "s/TAG/$tag/" deployments2.yaml
+                kubectl apply -f deployments2.yaml
 		'''
                         }
                     }
