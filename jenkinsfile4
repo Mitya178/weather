@@ -36,7 +36,7 @@ pipeline {
 		kubectl get nodes
                 kubectl apply -f deployment.yaml
 		'''
-                        } catch(error) { }
+                        }
                     }
         }
   }
