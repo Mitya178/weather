@@ -5,6 +5,8 @@ metadata:
   labels:
     project: dell
 spec:
+  strategy:
+    type: Recreate
   replicas: 3
   selector:
     matchLabels:
