@@ -27,7 +27,7 @@ pipeline {
     }
     stage('Deployment') {
             steps {
-                sshagent(credentials: ['k8s-master']) {
+                sshagent(credentials: ['ssh-master-k8s-dell']) {
                     sh 'scp -r -o StrictHostKeyChecking=no try2.yaml root@94.26.239.41:/root/k8s'
                     script {
                         try {
