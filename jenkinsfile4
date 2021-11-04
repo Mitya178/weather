@@ -25,25 +25,19 @@ pipeline {
         '''
       }
     }
-    stage('Deploy to K8s')
-    {
-            steps{
-                    sshagent(['k8s-master'])
-		    {
-                    	    sh 'scp -r -o StrictHostKeyChecking=no try2.yaml root@94.26.239.41:/root/k8s'
- 
-                   	    script{
-                        	    try{
-                            		    sh 'ssh root@94.26.239.41 kubectl apply -f /root/k8s/try2.yaml --kubeconfig=/root/.kube/config'
-
-                            }catch(error)
-                            {
-
-
-			    }
-                    }
+    stage('Deployment') {
+            steps {
+		script {
+		  def tag = org.apache.commons.lang.RandomStringUtils.randomAlphanumeric(10).toLowerCase()
+                  println(tag)
                 }
-            }
+		withKubeConfig([credentialsId: 'jenkins4', serverUrl: 'https://94.26.239.41:6443']) {
+                sh '''
+		kubectl get nodes
+                kubectl apply -f deployment.yaml
+		'''
+                        } catch(error) { }
+                    }
         }
   }
  post {
