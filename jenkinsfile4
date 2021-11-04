@@ -34,7 +34,7 @@ pipeline {
 		withKubeConfig([credentialsId: 'jenkins4', serverUrl: 'https://94.26.239.41:6443']) {
                 sh '''
 		kubectl get nodes
-                kubectl apply -f deployment.yaml
+                kubectl apply -f deployments.yaml
 		'''
                         }
                     }
