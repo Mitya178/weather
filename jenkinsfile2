@@ -28,10 +28,10 @@ pipeline {
     stage('Deployment') {
             steps {
                 sshagent(credentials: ['ssh-master-k8s-dell']) {
-                    sh 'scp -r -o StrictHostKeyChecking=no deployment.yaml root@94.26.239.41:/root/k8s'
+                    sh 'scp -r -o StrictHostKeyChecking=no deployments.yaml root@94.26.239.41:/root/k8s'
                     script {
                         try {
-                            sh 'ssh root@94.26.239.41 kubectl apply -f /root/k8s/deployment.yaml --kubeconfig=/root/.kube/config'
+                            sh 'ssh root@94.26.239.41 kubectl apply -f /root/k8s/deployments.yaml --kubeconfig=/root/.kube/config'
                         } catch(error) { }
                     }
                 }
