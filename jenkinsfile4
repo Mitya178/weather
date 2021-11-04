@@ -1,4 +1,4 @@
-def tag = org.apache.commons.lang.RandomStringUtils.randomAlphanumeric(10).toLowerCase()
+def tag = org.apache.commons.lang.RandomStringUtils.randomAlphanumeric(9).toLowerCase()
 pipeline {
   agent any
   options {
