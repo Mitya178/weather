@@ -20,10 +20,28 @@ pipeline {
     stage('Push') {
       steps {
         sh '''
-        docker tag my_flask_app:v0.1 mitya178/my_flask_app:v0.07
-        docker push mitya178/my_flask_app:v0.07
+        docker tag my_flask_app:v0.1 mitya178/my_flask_app:v1
+        docker push mitya178/my_flask_app:v1
         '''
       }
     }
+    stage('Deployment') {
+            steps {
+                sshagent(credentials: ['k8s-master']) {
+                    sh 'scp -r -o StrictHostKeyChecking=no try2.yaml root@94.26.239.41:/home/dmitriy/manifest'
+                    script {
+                        try {
+                            sh 'ssh root@94.26.239.41 kubectl apply -f /home/dmitriy/manifest/try2.yaml --kubeconfig=/root/.kube/config'
+                        } catch(error) { }
+                    }
+                }
+            }
+        }
   }
+ post {
+   always {
+        sh 'docker logout'
+    }
+   }
+
 }
