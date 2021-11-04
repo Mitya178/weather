@@ -30,11 +30,11 @@ pipeline {
             steps{
                     sshagent(['k8s-master'])
 		    {
-                    	    sh 'scp -r -o StrictHostKeyChecking=no try2.yaml root@94.26.239.41:/home/dmitriy/manifest'
+                    	    sh 'scp -r -o StrictHostKeyChecking=no try2.yaml root@94.26.239.41:/root/k8s'
  
                    	    script{
                         	    try{
-                            		    sh 'ssh root@94.26.239.41 kubectl apply -f /home/dmitriy/manifest/try2.yaml --kubeconfig=/root/.kube/config'
+                            		    sh 'ssh root@94.26.239.41 kubectl apply -f /root/k8s/try2.yaml --kubeconfig=/root/.kube/config'
 
                             }catch(error)
                             {
