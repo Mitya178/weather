@@ -19,6 +19,11 @@ pipeline {
     }
     stage('Push') {
       steps {
+          echo 'Hello script'
+          
+          script{
+              def tag = org.apache.commons.lang.RandomStringUtils.randomAlphanumeric(10).toLowerCase()
+              }
         sh '''
         docker tag my_flask_app:v0.1 mitya178/my_flask_app:v1
         docker push mitya178/my_flask_app:v1
