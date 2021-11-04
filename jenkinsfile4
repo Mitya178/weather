@@ -1,3 +1,4 @@
+def tag = org.apache.commons.lang.RandomStringUtils.randomAlphanumeric(10).toLowerCase()
 pipeline {
   agent any
   options {
@@ -9,7 +10,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'docker build -t my_flask_app:v0.1 .'
+        sh 'docker build -t my_flask_app:$tag .'
       }
     }
     stage('Login') {
@@ -20,20 +21,16 @@ pipeline {
     stage('Push') {
       steps {
         sh '''
-        docker tag my_flask_app:v0.1 mitya178/my_flask_app:v1
-        docker push mitya178/my_flask_app:v1
+        docker tag my_flask_app:$tag mitya178/my_flask_app:$tag
+        docker push mitya178/my_flask_app:$tag
         '''
       }
     }
     stage('Deployment') {
             steps {
-		script {
-		  def tag = org.apache.commons.lang.RandomStringUtils.randomAlphanumeric(10).toLowerCase()
-                  println(tag)
-                }
-		withKubeConfig([credentialsId: 'jenkins4', serverUrl: 'https://94.26.239.41:6443']) {
+	    	withKubeConfig([credentialsId: 'jenkins4', serverUrl: 'https://94.26.239.41:6443']) {
                 sh '''
-		kubectl get nodes
+		sed -i "s/TAG/$tag/" deployments.yaml
                 kubectl apply -f deployments.yaml
 		'''
                         }
