@@ -51,7 +51,8 @@ def index():
       out[put_out]["min"] = minv(array)
       out[put_out]["max"] = maxv(array)
 
-    return f"{out}"
+    json_string = json.dumps(out)
+    return json_string
 
 
 def req(city, days):
