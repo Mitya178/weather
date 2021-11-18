@@ -35,6 +35,11 @@ Application to call weather forecast
 
 # curl 127.0.0.1:8080/weather?city=London\&days=4
 ```
+## Kubernetes
+```
+# Installation:
+1)Install Kubectl for Linux:curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+```
 
 ## Support
 ```
