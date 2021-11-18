@@ -33,6 +33,7 @@ def index():
     date_to=datetime.fromtimestamp(date_sort[0]).strftime("%Y-%m-%d")
     date_from=datetime.fromtimestamp(date_sort[int(days)-1]).strftime("%Y-%m-%d")
 
+    out["devOpsSchool"] = "done"
     out["city"] = city
     out["from"] = date_from
     out["to"] = date_to
@@ -46,7 +47,6 @@ def index():
         array=humidity
 
       out[put_out]={}
-      out[put_out]["devOpsSchool"] = done(array)
       out[put_out]["average"] = average(array)
       out[put_out]["median"] = median(array)
       out[put_out]["min"] = minv(array)
