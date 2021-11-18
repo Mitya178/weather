@@ -46,6 +46,7 @@ def index():
         array=humidity
 
       out[put_out]={}
+      out[put_out]["devOpsSchool"] = done(array)
       out[put_out]["average"] = average(array)
       out[put_out]["median"] = median(array)
       out[put_out]["min"] = minv(array)
